@@ -204,7 +204,10 @@ const vis: CollapsibleTreeVisualization = {
         })
         .style('font-family', "'Open Sans', Helvetica, sans-serif")
         .style('font-size', textSize + 'px')
-        .text((d: any) => d.data.name)
+        .text((d: any) => d.data.name.length > 25 ? d.data.name.substring(0,25).concat("...") : d.data.name)
+        .append("svg:title").text(function(d: any){ return d.data.name })
+
+
 
       // UPDATE
       const nodeUpdate = nodeEnter.merge(node)
